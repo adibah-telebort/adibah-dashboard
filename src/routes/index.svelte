@@ -205,8 +205,11 @@
         <tbody>
           <tr>
             <th scope="row" class="table-primary">MON</th>
-            <td></td>
-            <td></td>
+            {#each timetable.Monday as timeSlot}
+              <td colspan={timeSlot.period} class={timeSlot.style}>
+                <button class="btn">{timeSlot.name}</button>
+              </td>
+            {/each}
           </tr>
           <tr>
             <th scope="row" class="table-primary">TUE</th>
