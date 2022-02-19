@@ -346,15 +346,15 @@
 			<div class="modal-body">
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Name</span>
-					<input type="text" class="form-control" />
+					<input type="text" class="form-control" bind:value={curName}/>
 				</div>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Period</span>
-					<input type="number" class="form-control" />
+					<input type="number" class="form-control" bind:value={curPeriod}/>
 				</div>
 				<div class="input-group mb-3">
 					<label class="input-group-text" for="inputGroupSelect01">Style</label>
-					<select class="form-select" id="inputGroupSelect01">
+					<select class="form-select" id="inputGroupSelect01" bind:value={curStyle}>
 						<option value="">Default</option>
 						<option value="table-primary">Blue</option>
 						<option value="table-success">Green</option>
