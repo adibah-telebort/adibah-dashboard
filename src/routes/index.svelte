@@ -174,6 +174,20 @@
 		]
 	};
 
+	let curDay;
+	let curIndex;
+	let curName;
+	let curPeriod;
+	let curStyle;
+
+	function showCurData(day, index, name, period, style) {
+		curDay = day;
+		curIndex = index;
+		curName = name;
+		curPeriod = period;
+		curStyle = style;
+	}
+
 	function addTimeSlot(day) {
 		if (day === 'Monday') {
 			timetable.Monday = [...timetable.Monday, { name: '??', period: 1, style: '' }];
@@ -218,9 +232,15 @@
 		<tbody>
 			<tr>
 				<th scope="row" class="table-primary">MON</th>
-				{#each timetable.Monday as timeSlot}
+				{#each timetable.Monday as timeSlot, index}
 					<td colspan={timeSlot.period} class={timeSlot.style}>
-						<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editTimeSlot"
+						<button
+							type="button"
+							class="btn"
+							data-bs-toggle="modal"
+							data-bs-target="#editTimeSlot"
+							on:click={() =>
+								showCurData('Monday', index, timeSlot.name, timeSlot.period, timeSlot.style)}
 							>{timeSlot.name}</button
 						>
 					</td>
@@ -231,9 +251,15 @@
 			</tr>
 			<tr>
 				<th scope="row" class="table-primary">TUE</th>
-				{#each timetable.Tuesday as timeSlot}
+				{#each timetable.Tuesday as timeSlot, index}
 					<td colspan={timeSlot.period} class={timeSlot.style}>
-						<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editTimeSlot"
+						<button
+							type="button"
+							class="btn"
+							data-bs-toggle="modal"
+							data-bs-target="#editTimeSlot"
+							on:click={() =>
+								showCurData('Tuesday', index, timeSlot.name, timeSlot.period, timeSlot.style)}
 							>{timeSlot.name}</button
 						>
 					</td>
@@ -244,9 +270,15 @@
 			</tr>
 			<tr>
 				<th scope="row" class="table-primary">WED</th>
-				{#each timetable.Wednesday as timeSlot}
+				{#each timetable.Wednesday as timeSlot, index}
 					<td colspan={timeSlot.period} class={timeSlot.style}>
-						<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editTimeSlot"
+						<button
+							type="button"
+							class="btn"
+							data-bs-toggle="modal"
+							data-bs-target="#editTimeSlot"
+							on:click={() =>
+								showCurData('Wednesday', index, timeSlot.name, timeSlot.period, timeSlot.style)}
 							>{timeSlot.name}</button
 						>
 					</td>
@@ -257,9 +289,15 @@
 			</tr>
 			<tr>
 				<th scope="row" class="table-primary">THU</th>
-				{#each timetable.Thursday as timeSlot}
+				{#each timetable.Thursday as timeSlot, index}
 					<td colspan={timeSlot.period} class={timeSlot.style}>
-						<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editTimeSlot"
+						<button
+							type="button"
+							class="btn"
+							data-bs-toggle="modal"
+							data-bs-target="#editTimeSlot"
+							on:click={() =>
+								showCurData('Thursday', index, timeSlot.name, timeSlot.period, timeSlot.style)}
 							>{timeSlot.name}</button
 						>
 					</td>
@@ -270,9 +308,15 @@
 			</tr>
 			<tr>
 				<th scope="row" class="table-primary">FRI</th>
-				{#each timetable.Friday as timeSlot}
+				{#each timetable.Friday as timeSlot, index}
 					<td colspan={timeSlot.period} class={timeSlot.style}>
-						<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editTimeSlot"
+						<button
+							type="button"
+							class="btn"
+							data-bs-toggle="modal"
+							data-bs-target="#editTimeSlot"
+							on:click={() =>
+								showCurData('Friday', index, timeSlot.name, timeSlot.period, timeSlot.style)}
 							>{timeSlot.name}</button
 						>
 					</td>
