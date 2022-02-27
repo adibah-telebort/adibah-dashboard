@@ -202,6 +202,26 @@
 		}
 	}
 
+	function deleteTimeSlot(day, index) {
+		if (day === 'Monday') {
+			timetable.Monday.splice(index, 1);
+			timetable = timetable;
+		} else if (day === 'Tuesday') {
+			timetable.Tuesday.splice(index, 1);
+			timetable = timetable;
+		} else if (day === 'Wednesday') {
+			timetable.Wednesday.splice(index, 1);
+			timetable = timetable;
+		} else if (day === 'Thursday') {
+			timetable.Thursday.splice(index, 1);
+			timetable = timetable;
+		} else if (day === 'Friday') {
+			timetable.Friday.splice(index, 1);
+			timetable = timetable;
+		}
+		saveEntry();
+	}
+
 	async function logout() {
 		const { error } = await supabase.auth.signOut();
 
@@ -346,11 +366,11 @@
 			<div class="modal-body">
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Name</span>
-					<input type="text" class="form-control" bind:value={curName}/>
+					<input type="text" class="form-control" bind:value={curName} />
 				</div>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Period</span>
-					<input type="number" class="form-control" bind:value={curPeriod}/>
+					<input type="number" class="form-control" bind:value={curPeriod} />
 				</div>
 				<div class="input-group mb-3">
 					<label class="input-group-text" for="inputGroupSelect01">Style</label>
@@ -366,7 +386,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={() => deleteTimeSlot(curDay, curIndex)}>Delete</button>
 				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
 			</div>
 		</div>
