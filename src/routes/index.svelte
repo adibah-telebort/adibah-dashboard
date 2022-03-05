@@ -265,6 +265,18 @@
 		);
 		if (error) alert(error.message);
 	}
+
+	// Get entries
+	async function getEntries() {
+		const { data, error } = await supabase.from('studentEntries').select();
+		if (error) alert(error.message);
+
+		if (data != '') {
+			timetable = data[0].timetable;
+		}
+	}
+
+	getEntries();
 </script>
 
 <div class="container">
@@ -430,7 +442,13 @@
 					data-bs-dismiss="modal"
 					on:click={() => deleteTimeSlot(curDay, curIndex)}>Delete</button
 				>
-				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					data-bs-dismiss="modal"
+					on:click={() => setTimeSlot(curDay, curIndex, curName, curPeriod, curStyle)}
+					>Save changes</button
+				>
 			</div>
 		</div>
 	</div>
