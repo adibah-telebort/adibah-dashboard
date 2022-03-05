@@ -247,10 +247,23 @@
 		saveEntry();
 	}
 
+	// Logout
 	async function logout() {
 		const { error } = await supabase.auth.signOut();
 
 		if (error) alert(error.message); // alert if error
+	}
+
+	// Upsert entry
+	async function saveEntry() {
+		const { error } = await supabase.from('studentEntries').upsert(
+			{
+				user_id: supabase.auth.user().id,
+				timetable: timetable
+			},
+			{ onConflict: 'user_id' }
+		);
+		if (error) alert(error.message);
 	}
 </script>
 
@@ -411,7 +424,12 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={() => deleteTimeSlot(curDay, curIndex)}>Delete</button>
+				<button
+					type="button"
+					class="btn btn-danger"
+					data-bs-dismiss="modal"
+					on:click={() => deleteTimeSlot(curDay, curIndex)}>Delete</button
+				>
 				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
 			</div>
 		</div>
