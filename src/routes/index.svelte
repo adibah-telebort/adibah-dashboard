@@ -222,6 +222,31 @@
 		saveEntry();
 	}
 
+	function setTimeSlot(day, index, newName, newPeriod, newStyle) {
+		if (day === 'Monday') {
+			timetable.Monday[index].name = newName;
+			timetable.Monday[index].period = newPeriod;
+			timetable.Monday[index].style = newStyle;
+		} else if (day === 'Tuesday') {
+			timetable.Tuesday[index].name = newName;
+			timetable.Tuesday[index].period = newPeriod;
+			timetable.Tuesday[index].style = newStyle;
+		} else if (day === 'Wednesday') {
+			timetable.Wednesday[index].name = newName;
+			timetable.Wednesday[index].period = newPeriod;
+			timetable.Wednesday[index].style = newStyle;
+		} else if (day === 'Thursday') {
+			timetable.Thursday[index].name = newName;
+			timetable.Thursday[index].period = newPeriod;
+			timetable.Thursday[index].style = newStyle;
+		} else if (day === 'Friday') {
+			timetable.Friday[index].name = newName;
+			timetable.Friday[index].period = newPeriod;
+			timetable.Friday[index].style = newStyle;
+		}
+		saveEntry();
+	}
+
 	async function logout() {
 		const { error } = await supabase.auth.signOut();
 
